@@ -3,12 +3,11 @@ function createDeck() {
   const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
   const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
   const deck = [];
-  for (var i = 0; i < this.suits.length; i++) {
-    for (var j = 0; j < this.faces.length; j++) {
-      this.deck.push(this.suits[i], this.faces[j], this.values[j]);
+  for (var i = 0; i < suits.length; i++) {
+    for (var j = 0; j < faces.length; j++) {
+      var card = {suit: suits[i], face: faces[j], value: values[j]}
+      deck.push(card);
     }
   }
-  console.log(this.deck);
+  console.log(deck);
 };
-createDeck();
-console.log(deck.length);
