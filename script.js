@@ -13,20 +13,20 @@ function createDeck() {
   }
   console.log(cards);
 }
-  let playersHand = [];
-  let dealersHand = [];
-  function deal () {
-    for (i = 0; i < 2; i++) {
-      if (playersHand.length < 2) {
-        playersHand.push(cards[Math.floor(Math.random() * cards.length)]);
-        console.log(playersHand);
-      }
-      if (dealersHand.length < 2) {
-        dealersHand.push(cards[Math.floor(Math.random() * cards.length)]);
-        console.log(dealersHand);
-      }
+let playersHand = [];
+let dealersHand = [];
+var randomNumber = function () {
+  return Math.floor(Math.random() * cards.length);
+}
+function deal() {
+  for (i = 0; i < 2; i++) {
+    if (playersHand.length < 2) {
+      playersHand.push(cards.splice(randomNumber(), 1)[0]);
+      dealersHand.push(cards.splice(randomNumber(), 1)[0]);
     }
   }
+}
+  // function hit() {}
 
 
 // function randomNumber() {
