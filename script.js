@@ -26,7 +26,9 @@ function deal() {
     }
   }
 }
-  // function hit() {}
+function hitPlayer() {
+  playersHand.push(cards.splice(randomNumber(), 1)[0]);
+}
 
 
 // function randomNumber() {
