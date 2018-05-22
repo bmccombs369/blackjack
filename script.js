@@ -3,7 +3,7 @@ const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'K
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
 const cards = [];
 
-// creates a 52 card deck
+// creates a 52 card deck on page loading
 function createDeck() {
   for (var i = 0; i < suits.length; i++) {
     for (var j = 0; j < faces.length; j++) {
@@ -13,6 +13,7 @@ function createDeck() {
   }
   console.log(cards);
 }
+createDeck();
 let playersHand = [];
 let dealersHand = [];
 var randomNumber = function () {
@@ -26,8 +27,21 @@ function deal() {
       dealersHand.push(cards.splice(randomNumber(), 1)[0]);
     }
   }
+  console.log(playersHand);
+  console.log(dealersHand);
 }
 // hits player with one card
 function hitPlayer() {
   playersHand.push(cards.splice(randomNumber(), 1)[0]);
+  console.log(playersHand);
 }
+
+// jquery for buttons
+$('.deal').click(function() {
+  deal()
+}
+);
+$('.hit').click(function() {
+  hitPlayer()
+}
+);
