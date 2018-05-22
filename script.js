@@ -27,8 +27,10 @@ function deal() {
     if (playersHand.length < 2) {
       playersHand.push(cards.splice(randomNumber(), 1)[0]);
       dealersHand.push(cards.splice(randomNumber(), 1)[0]);
+
     }
   }
+
   console.log(playersHand);
   console.log(dealersHand);
 }
@@ -37,16 +39,40 @@ function deal() {
 function hitPlayer() {
   playersHand.push(cards.splice(randomNumber(), 1)[0]);
   console.log(playersHand);
+  // if (/*playerTotal*/ > 21) {
+  //   alert('You busted!');
+  // }
+}
+
+//player stays and passes turn to the dealer
+function stay() {
+  // if (/*dealersTotal*/ <= 16) {
+  //   dealersHand.push(cards.splice(randomNumber(), 1)[0]);
+  // }
+  // if (/*dealersTotal*/ >= 17 && /*dealersTotal*/ <= 20) {
+  //   //compare dealerTotal and playerTotal
+  // }
+}
+
+//reset the game
+function reset() {
+  let playersHand = [];
+  let dealersHand = [];
+  //add deal function call to turn into a redeal button
 }
 
 // jquery for buttons
 $('.deal').click(function () {
   deal()
-} 
+}
 );
 $('.hit').click(function () {
   hitPlayer()
 }
 );
-let playerCard1 = playersHand[0];
-let playerCard2 = playersHand[1];
+
+const playerCardValue1 = playersHand[0].value;
+const playerCardValue2 = playersHand[1].value;
+const playerCardValue3 = playersHand[2].value;
+const playerCardValue4 = playersHand[3].value;
+const playerCardValue5 = playersHand[4].value;
