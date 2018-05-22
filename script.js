@@ -18,6 +18,7 @@ let dealersHand = [];
 var randomNumber = function () {
   return Math.floor(Math.random() * cards.length);
 }
+// deals 2 cards to player and dealer
 function deal() {
   for (i = 0; i < 2; i++) {
     if (playersHand.length < 2) {
@@ -26,16 +27,7 @@ function deal() {
     }
   }
 }
+// hits player with one card
 function hitPlayer() {
   playersHand.push(cards.splice(randomNumber(), 1)[0]);
 }
-
-
-// function randomNumber() {
-//   card = Math.floor(Math.random() * 52);
-//   return card;
-// }
-// const card1 = cards[randomNumber()];
-// console.log(card1)
-// const card2 = cards[randomNumber()];
-
