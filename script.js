@@ -10,4 +10,13 @@ function createDeck() {
     }
   }
   console.log(deck);
-};
+}
+
+function randomNumber() {
+  const card = Math.floor(Math.random() * 53);
+  return card;
+}
+
+function deal() {
+
+}
