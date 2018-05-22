@@ -14,9 +14,11 @@ function createDeck() {
   console.log(cards);
 }
 createDeck();
+
+
 let playersHand = [];
 let dealersHand = [];
-var randomNumber = function () {
+const randomNumber = function () {
   return Math.floor(Math.random() * cards.length);
 }
 // deals 2 cards to player and dealer
@@ -30,6 +32,7 @@ function deal() {
   console.log(playersHand);
   console.log(dealersHand);
 }
+
 // hits player with one card
 function hitPlayer() {
   playersHand.push(cards.splice(randomNumber(), 1)[0]);
@@ -37,11 +40,13 @@ function hitPlayer() {
 }
 
 // jquery for buttons
-$('.deal').click(function() {
+$('.deal').click(function () {
   deal()
-}
+} 
 );
-$('.hit').click(function() {
+$('.hit').click(function () {
   hitPlayer()
 }
 );
+let playerCard1 = playersHand[0];
+let playerCard2 = playersHand[1];
