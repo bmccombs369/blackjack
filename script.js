@@ -64,10 +64,12 @@ const GameData = {
   },
 
   //**reset the game
-  reset: function () {
+  redeal: function () {
+    this.cards = [];
     this.createDeck();
     this.playersHand = [];
     this.clickdealersHand = [];
+    this.deal();
     //add deal function call to turn into a redeal button
   }
 }
