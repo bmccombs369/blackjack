@@ -7,6 +7,8 @@ const cards = [];
 const GameLogic = {
   playersHand: [],
   dealersHand: [],
+  playerHandValue: 0,
+  dealerHandValue: 0,
 
   //**creates a 52 card deck
   createDeck: function () {
@@ -33,9 +35,9 @@ const GameLogic = {
     const playerHandValue = this.playersHand[0].value + this.playersHand[1].value;
     const dealerHandValue = this.dealersHand[0].value + this.dealersHand[1].value;
     console.log(this.playersHand);
+    console.log('playerHandValue ' + playerHandValue);
     console.log(this.dealersHand);
-    console.log(playerHandValue);
-    console.log(dealerHandValue);
+    console.log('dealerHandValue ' + dealerHandValue);
     if (playerHandValue == 21) {
       if (playerHandValue > dealerHandValue) {
         alert('You have blackjack!');//SWITCH TO SWEET ALERT
@@ -54,12 +56,12 @@ const GameLogic = {
   hitPlayer: function () {
     this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
     console.log(this.playersHand);
-    let playerHandValue = 0;
+    this.playerHandValue = 0;
     for (i = 0; i < this.playersHand.length; i++) {
-      playerHandValue += this.playersHand[i].value
+      this.playerHandValue += this.playersHand[i].value
     }
-    console.log(playerHandValue);
-    if (playerHandValue > 21) {
+    console.log('playerHandValue ' + this.playerHandValue);
+    if (this.playerHandValue > 21) {
       alert('You busted!');//SWITH TO SWEET ALERT
       // turn off buttons
     }
@@ -67,16 +69,15 @@ const GameLogic = {
 
   //**player stays and passes turn to the dealer
   stay: function () {
-    let dealersHandValue = 0;
-    for (i = 0; i < this.dealersHand.length; i++) {
-      dealersHandValue += this.dealersHand[i].value;
-    }
-    console.log(dealersHandValue);
-    console.log(this.hitPlayer.playerHandValue);//this is undefined
-    if (dealersHandValue <= this.hitPlayer.playerHandValue/*^same here*/) {
+    while (this.deal.dealerHandValue < this.playerHandValue) {
       this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+      // this.dealerHandValue = 0;
+      for (i = 0; i < this.dealersHand.length; i++) {
+        this.dealerHandValue += this.dealersHand[i].value;
+      }
     }
-    console.log(dealersHandValue);
+    console.log(this.dealersHand);
+    console.log('dealerHandValue ' + this.dealerHandValue);
     // if (/*dealersTotal*/ >= 17 && /*dealersTotal*/ <= 20) {
     //   //compare dealerTotal and playerTotal
     // }
