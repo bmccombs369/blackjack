@@ -25,6 +25,7 @@ const GameData = {
 
   //**deals 2 cards to player and dealer
   deal: function () {
+    this.createDeck();
     for (i = 0; i < 2; i++) {
       this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
       this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
@@ -56,12 +57,13 @@ const GameData = {
     let playerHandValue = 0;
     for (i = 0; i < this.playersHand.length; i++) {
       playerHandValue += this.playersHand[i].value
+      console.log(playerHandValue)
+      if (playerHandValue > 21) {
+        alert('You busted!');//SWITH TO SWEET ALERT
+      }
+      // turn off buttons
     }
-    console.log(playerHandValue)
-    // if (/*playerTotal*/ > 21) {
-    //   alert('You busted!');
-    // }
-    // turn off buttons
+
   },
 
   //**player stays and passes turn to the dealer
@@ -84,18 +86,19 @@ const GameData = {
   },
 
   redeal: function () {
+    this.reset();
     this.createDeck();
     this.deal();
   }
 
-//**disables the buttons other than redeal */
+  //**disables the buttons other than redeal */
   // win: function () {
 
   // }
 }
 
 
-window.onload = GameData.createDeck();
+// window.onload = GameData.createDeck();
 //**jquery for buttons
 $('.deal').click(function () {
   GameData.deal();
@@ -107,5 +110,9 @@ $('.hit').click(function () {
 );
 $('.stay').click(function () {
   GameData.stay();
+}
+);
+$('.redeal').click(function () {
+  GameData.redeal();
 })
 
