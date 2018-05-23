@@ -29,28 +29,36 @@ const GameData = {
       if (this.playersHand.length < 2) {
         this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
         this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-        //check if playerTotal = 21
-        //if it does equal 21 compare with dealerTotal
-        //if dealerTotal is not 21 then player wins
-        //else it is a push
+
+
       }
     }
+    const playerHandValue = this.playersHand[0].value + this.playersHand[1].value;
+    const dealerHandValue = this.dealersHand[0].value + this.dealersHand[1].value;
     console.log(this.playersHand);
     console.log(this.dealersHand);
-    // const playerCardValue1 = this.playersHand[0].value;
-    // const playerCardValue2 = this.playersHand[1].value;
-    // console.log(playerCardValue1);
-    // console.log(playerCardValue2);
-    const playerHandValue = this.playersHand[0].value + this.playersHand[1].value;
     console.log(playerHandValue);
-    // if (playerHandValue === 21) {
-      // 
-    // } 
+    console.log(dealerHandValue);
+    if (playerHandValue == 21) {
+      if (playerHandValue > dealerHandValue) {
+        alert('You have blackjack!');
+      }
+      if (playerHandValue == dealerHandValue) {
+        alert('You pushed with the dealer.');
+      }
+    }
+    //check if playerTotal = 21
+    //if it does equal 21 compare with dealerTotal
+    //if dealerTotal is not 21 then player wins
+    //else it is a push
+    // const playerHandValue = this.playersHand[0].value + this.playersHand[1].value;
+    // console.log(playerHandValue);
   },
 
-  // playerCardValue3: playersHand[2].value,
-  // playerCardValue4: playersHand[3].value,
-  // playerCardValue5: playersHand[4].value,
+  // checkForBlackjack: function () {
+
+  // },
+
   //**hits player with one card
   hitPlayer: function () {
     this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
