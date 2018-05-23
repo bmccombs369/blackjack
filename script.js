@@ -3,7 +3,6 @@ const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'K
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
 let cards = [];
 
-
 const GameLogic = {
   playersHand: [],
   dealersHand: [],
@@ -48,23 +47,19 @@ const GameLogic = {
 
   //**deals 2 cards to player and dealer
   deal: function () {
-    if (!this.isRunning) {
-      this.isRunning = true
-      this.createDeck();
-      for (i = 0; i < 2; i++) {
-        this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-        this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+    this.createDeck();
+    for (i = 0; i < 2; i++) {
+      this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+      this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+    }
+    this.getPlayerHandValue();
+    this.getDealerHandValue();
+    if (this.playerHandValue == 21) {
+      if (this.playerHandValue > this.dealerHandValue) {
+        alert('You have blackjack!');//SWITCH TO SWEET ALERT
       }
-      this.getPlayerHandValue();
-      this.getDealerHandValue();
-      if (this.playerHandValue == 21) {
-        if (this.playerHandValue > this.dealerHandValue) {
-          alert('You have blackjack!');//SWITCH TO SWEET ALERT
-          this.isRunning = false;
-        }
-        if (this.playerHandValue == this.dealerHandValue) {
-          alert('You pushed with the dealer.');//SWITCH TO SWEET ALERT
-        }
+      if (this.playerHandValue == this.dealerHandValue) {
+        alert('You pushed with the dealer.');//SWITCH TO SWEET ALERT
       }
     }
   },
@@ -75,15 +70,10 @@ const GameLogic = {
 
   //**hits player with one card
   hitPlayer: function () {
-    if (!this.isRunning) {
-      this.isRunning = true
-      this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-      this.getPlayerHandValue();
-      if (this.playerHandValue > 21) {
-        alert('You busted!');//SWITH TO SWEET ALERT
-        this.isRunning = false;
-        // turn off buttons
-      }
+    this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+    this.getPlayerHandValue();
+    if (this.playerHandValue > 21) {
+      alert('You busted!');//SWITH TO SWEET ALERT        // turn off buttons
     }
   },
 
@@ -93,6 +83,9 @@ const GameLogic = {
   stay: function () {
     this.getDealerHandValue();
     this.getPlayerHandValue();
+    if (this.dealerHandValue === 21) {
+      alert('Dealer has blackjack. You lose.')
+    }
     while (this.dealerHandValue < this.playerHandValue) {
       this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
       this.getDealerHandValue();
@@ -100,12 +93,17 @@ const GameLogic = {
         alert('Dealer busted. You win!')
         //stop game
       }
+      if (this.dealerHandValue === 21) {
+        alert('Dealer wins.')
+      }
     }
-    if (this.dealerHandValue > this.playerHandValue) {
-      alert('Dealer wins.');
-    }
-    if (this.dealerHandValue = this.playerHandValue) {
-      alert('You push.')
+    if (this.dealerHandValue < 21) {
+      if (this.dealerHandValue > this.playerHandValue) {
+        alert('Dealer wins.');
+      }
+      if (this.dealerHandValue === this.playerHandValue) {
+        alert('You push.');
+      }
     }
   },
 
@@ -129,18 +127,29 @@ const GameLogic = {
   // }
 }
 
+const UserInterface = {
 
-//**jquery for buttons
+}
+
+
+//**event handlers for buttons
 $('.deal').click(function () {
   GameLogic.deal();
+  $('.deal').toggle();
+  $('.hit').toggle();
+  $('.stay').toggle();
+  $('.redeal').toggle();
 });
 $('.hit').click(function () {
   GameLogic.hitPlayer();
 });
+$('.hit').toggle();
 $('.stay').click(function () {
   GameLogic.stay();
 });
+$('.stay').toggle();
 $('.redeal').click(function () {
   GameLogic.redeal();
 });
+$('.redeal').toggle();
 
