@@ -2,6 +2,10 @@ const suits = ['Spades', 'Clubs', 'Hearts', 'Diamonds'];
 const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
 const cards = [];
+let playersHand = [];
+let dealersHand = [];
+
+
 
 //**creates a 52 card deck on page loading
 function createDeck() {
@@ -16,8 +20,6 @@ function createDeck() {
 createDeck();
 
 
-let playersHand = [];
-let dealersHand = [];
 const randomNumber = function () {
   return Math.floor(Math.random() * cards.length);
 }
@@ -27,10 +29,12 @@ function deal() {
     if (playersHand.length < 2) {
       playersHand.push(cards.splice(randomNumber(), 1)[0]);
       dealersHand.push(cards.splice(randomNumber(), 1)[0]);
-
+      //add a check if playerTotal = 21
+      //if it does equal 21 compare with dealerTotal
+      //if dealerTotal is not 21 then player wins
+      //else it is a push
     }
   }
-
   console.log(playersHand);
   console.log(dealersHand);
 }
@@ -42,6 +46,7 @@ function hitPlayer() {
   // if (/*playerTotal*/ > 21) {
   //   alert('You busted!');
   // }
+  // turn off buttons
 }
 
 //**player stays and passes turn to the dealer
@@ -74,8 +79,8 @@ $('.stay').click(function () {
   stay();
 })
 
-const playerCardValue1 = playersHand[0].value;
-const playerCardValue2 = playersHand[1].value;
-const playerCardValue3 = playersHand[2].value;
-const playerCardValue4 = playersHand[3].value;
-const playerCardValue5 = playersHand[4].value;
+// const playerCardValue1 = playersHand[0].value;
+// const playerCardValue2 = playersHand[1].value;
+// const playerCardValue3 = playersHand[2].value;
+// const playerCardValue4 = playersHand[3].value;
+// const playerCardValue5 = playersHand[4].value;
