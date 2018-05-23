@@ -69,7 +69,8 @@ const GameLogic = {
 
   //**player stays and passes turn to the dealer
   stay: function () {
-    while (this.deal.dealerHandValue < this.playerHandValue) {
+    console.log(this.playerHandValue);
+    while (this.dealerHandValue < this.playerHandValue) {
       this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
       // this.dealerHandValue = 0;
       for (i = 0; i < this.dealersHand.length; i++) {
