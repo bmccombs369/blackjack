@@ -13,6 +13,7 @@ const GameLogic = {
 
   //**creates a 52 card deck
   createDeck: function () {
+    console.log(this.cards.length);
     for (var i = 0; i < suits.length; i++) {
       for (var j = 0; j < faces.length; j++) {
         var card = { suit: suits[i], face: faces[j], value: values[j] }
@@ -27,8 +28,8 @@ const GameLogic = {
   },
 
   getPlayerHandValue: function () {
-    //set player value to 0?
-    for(i = 0; i < this.playersHand.length; i++) {
+    this.playerHandValue = 0;
+    for (i = 0; i < this.playersHand.length; i++) {
       this.playerHandValue += this.playersHand[i].value;
     }
     console.log(this.playersHand);
@@ -36,7 +37,7 @@ const GameLogic = {
   },
 
   getDealerHandValue: function () {
-    //set dealerValue to 0?
+    this.dealerHandValue = 0;
     for (i = 0; i < this.dealersHand.length; i++) {
       this.dealerHandValue += this.dealersHand[i].value;
     }
@@ -51,9 +52,7 @@ const GameLogic = {
       this.playersHand.push(this.cards.splice(this.randomNumber(), 1)[0]);
       this.dealersHand.push(this.cards.splice(this.randomNumber(), 1)[0]);
     }
-    // const playerHandValue = this.playersHand[0].value + this.playersHand[1].value;
     this.getPlayerHandValue();
-    // const dealerHandValue = this.dealersHand[0].value + this.dealersHand[1].value;
     this.getDealerHandValue();
     if (this.playerHandValue == 21) {
       if (this.playerHandValue > this.dealerHandValue) {
@@ -72,7 +71,6 @@ const GameLogic = {
   //**hits player with one card
   hitPlayer: function () {
     this.playersHand.push(this.cards.splice(this.randomNumber(), 1)[0]);
-    console.log(this.playersHand);
     this.getPlayerHandValue();
     if (this.playerHandValue > 21) {
       alert('You busted!');//SWITH TO SWEET ALERT
@@ -84,36 +82,34 @@ const GameLogic = {
 
   //**player stays and passes turn to the dealer
   stay: function () {
-    for (i = 0; i < this.dealersHand.length; i++) {
-      this.dealerHandValue += this.dealersHand[i].value;
-    }
-    console.log(this.dealerHandValue);
-    while (this.dealerHandValue < 21) {
+    this.getDealerHandValue();
+    this.getPlayerHandValue();
+    while (this.dealerHandValue < this.playerHandValue) {
       this.dealersHand.push(this.cards.splice(this.randomNumber(), 1)[0]);
-      this.dealerHandValue = 0;
-      for (i = 0; i < this.dealersHand.length; i++) {
-        this.dealerHandValue += this.dealersHand[i].value;
-        console.log(this.dealerHandValue);
+      this.getDealerHandValue();
+      if (this.dealerHandValue > 21) {
+        alert('Dealer busted. You win!')
+        //stop game
       }
-      console.log(this.dealersHand);
     }
-    // if (/*dealersTotal*/ >= 17 && /*dealersTotal*/ <= 20) {
-    //   //compare dealerTotal and playerTotal
-    // }
+    if (this.dealerHandValue > this.playerHandValue){
+      alert('Dealer wins.');
+    }
+    if (this.dealerHandValue = this.playerHandValue){
+      alert('')
+    }
   },
 
-  //**reset the game */
+  //**reset the game
   reset: function () {
     this.cards = [];
-    // console.log(this.cards);
     this.playersHand = [];
     this.dealersHand = [];
-
-    //add deal function call to turn into a redeal button
   },
 
   redeal: function () {
     this.reset();
+    console.log('the number of cards is', this.cards.length);
     this.createDeck();
     this.deal();
   }
