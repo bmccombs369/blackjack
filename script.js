@@ -4,11 +4,11 @@ const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
 const cards = [];
 
 
-const GameData = {
+const GameLogic = {
   playersHand: [],
   dealersHand: [],
 
-  //**creates a 52 card deck on page loading
+  //**creates a 52 card deck
   createDeck: function () {
     for (var i = 0; i < suits.length; i++) {
       for (var j = 0; j < faces.length; j++) {
@@ -46,8 +46,8 @@ const GameData = {
     }
   },
 
+  //
   // checkForBlackjack: function () {
-
   // },
 
   //**hits player with one card
@@ -57,20 +57,26 @@ const GameData = {
     let playerHandValue = 0;
     for (i = 0; i < this.playersHand.length; i++) {
       playerHandValue += this.playersHand[i].value
-      console.log(playerHandValue)
-      if (playerHandValue > 21) {
-        alert('You busted!');//SWITH TO SWEET ALERT
-      }
+    }
+    console.log(playerHandValue);
+    if (playerHandValue > 21) {
+      alert('You busted!');//SWITH TO SWEET ALERT
       // turn off buttons
     }
-
   },
 
   //**player stays and passes turn to the dealer
   stay: function () {
-    // if (/*dealersTotal*/ <= 16) {
-    //   dealersHand.push(cards.splice(randomNumber(), 1)[0]);
-    // }
+    let dealersHandValue = 0;
+    for (i = 0; i < this.dealersHand.length; i++) {
+      dealersHandValue += this.dealersHand[i].value;
+    }
+    console.log(dealersHandValue);
+    console.log(this.hitPlayer.playerHandValue);//this is undefined
+    if (dealersHandValue <= this.hitPlayer.playerHandValue/*^same here*/) {
+      this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+    }
+    console.log(dealersHandValue);
     // if (/*dealersTotal*/ >= 17 && /*dealersTotal*/ <= 20) {
     //   //compare dealerTotal and playerTotal
     // }
@@ -98,21 +104,17 @@ const GameData = {
 }
 
 
-// window.onload = GameData.createDeck();
 //**jquery for buttons
 $('.deal').click(function () {
-  GameData.deal();
-}
-);
+  GameLogic.deal();
+});
 $('.hit').click(function () {
-  GameData.hitPlayer();
-}
-);
+  GameLogic.hitPlayer();
+});
 $('.stay').click(function () {
-  GameData.stay();
-}
-);
+  GameLogic.stay();
+});
 $('.redeal').click(function () {
-  GameData.redeal();
-})
+  GameLogic.redeal();
+});
 
