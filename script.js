@@ -26,12 +26,8 @@ const GameData = {
   //**deals 2 cards to player and dealer
   deal: function () {
     for (i = 0; i < 2; i++) {
-      if (this.playersHand.length < 2) {
-        this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-        this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-
-
-      }
+      this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+      this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
     }
     const playerHandValue = this.playersHand[0].value + this.playersHand[1].value;
     const dealerHandValue = this.dealersHand[0].value + this.dealersHand[1].value;
@@ -41,18 +37,12 @@ const GameData = {
     console.log(dealerHandValue);
     if (playerHandValue == 21) {
       if (playerHandValue > dealerHandValue) {
-        alert('You have blackjack!');
+        alert('You have blackjack!');//SWITCH TO SWEET ALERT
       }
       if (playerHandValue == dealerHandValue) {
-        alert('You pushed with the dealer.');
+        alert('You pushed with the dealer.');//SWITCH TO SWEET ALERT
       }
     }
-    //check if playerTotal = 21
-    //if it does equal 21 compare with dealerTotal
-    //if dealerTotal is not 21 then player wins
-    //else it is a push
-    // const playerHandValue = this.playersHand[0].value + this.playersHand[1].value;
-    // console.log(playerHandValue);
   },
 
   // checkForBlackjack: function () {
@@ -63,6 +53,11 @@ const GameData = {
   hitPlayer: function () {
     this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
     console.log(this.playersHand);
+    let playerHandValue = 0;
+    for (i = 0; i < this.playersHand.length; i++) {
+      playerHandValue += this.playersHand[i].value
+    }
+    console.log(playerHandValue)
     // if (/*playerTotal*/ > 21) {
     //   alert('You busted!');
     // }
@@ -79,15 +74,24 @@ const GameData = {
     // }
   },
 
-  //**reset the game
-  redeal: function () {
+  //**reset the game */
+  reset: function () {
     this.cards = [];
-    this.createDeck();
     this.playersHand = [];
-    this.clickdealersHand = [];
-    this.deal();
+    this.dealersHand = [];
+
     //add deal function call to turn into a redeal button
+  },
+
+  redeal: function () {
+    this.createDeck();
+    this.deal();
   }
+
+//**disables the buttons other than redeal */
+  // win: function () {
+
+  // }
 }
 
 
