@@ -9,6 +9,7 @@ const GameLogic = {
   dealersHand: [],
   playerHandValue: 0,
   dealerHandValue: 0,
+  isRunning: true,
   // cards: [],
 
   //**creates a 52 card deck
@@ -47,19 +48,23 @@ const GameLogic = {
 
   //**deals 2 cards to player and dealer
   deal: function () {
-    this.createDeck();
-    for (i = 0; i < 2; i++) {
-      this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-      this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-    }
-    this.getPlayerHandValue();
-    this.getDealerHandValue();
-    if (this.playerHandValue == 21) {
-      if (this.playerHandValue > this.dealerHandValue) {
-        alert('You have blackjack!');//SWITCH TO SWEET ALERT
+    if (!this.isRunning) {
+      this.isRunning = true
+      this.createDeck();
+      for (i = 0; i < 2; i++) {
+        this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+        this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
       }
-      if (this.playerHandValue == this.dealerHandValue) {
-        alert('You pushed with the dealer.');//SWITCH TO SWEET ALERT
+      this.getPlayerHandValue();
+      this.getDealerHandValue();
+      if (this.playerHandValue == 21) {
+        if (this.playerHandValue > this.dealerHandValue) {
+          alert('You have blackjack!');//SWITCH TO SWEET ALERT
+          this.isRunning = false;
+        }
+        if (this.playerHandValue == this.dealerHandValue) {
+          alert('You pushed with the dealer.');//SWITCH TO SWEET ALERT
+        }
       }
     }
   },
@@ -70,11 +75,15 @@ const GameLogic = {
 
   //**hits player with one card
   hitPlayer: function () {
-    this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-    this.getPlayerHandValue();
-    if (this.playerHandValue > 21) {
-      alert('You busted!');//SWITH TO SWEET ALERT
-      // turn off buttons
+    if (!this.isRunning) {
+      this.isRunning = true
+      this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+      this.getPlayerHandValue();
+      if (this.playerHandValue > 21) {
+        alert('You busted!');//SWITH TO SWEET ALERT
+        this.isRunning = false;
+        // turn off buttons
+      }
     }
   },
 
@@ -92,10 +101,10 @@ const GameLogic = {
         //stop game
       }
     }
-    if (this.dealerHandValue > this.playerHandValue){
+    if (this.dealerHandValue > this.playerHandValue) {
       alert('Dealer wins.');
     }
-    if (this.dealerHandValue = this.playerHandValue){
+    if (this.dealerHandValue = this.playerHandValue) {
       alert('You push.')
     }
   },
