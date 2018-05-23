@@ -29,7 +29,7 @@ const GameData = {
       if (this.playersHand.length < 2) {
         this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
         this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
-        //add a check if playerTotal = 21
+        //check if playerTotal = 21
         //if it does equal 21 compare with dealerTotal
         //if dealerTotal is not 21 then player wins
         //else it is a push
@@ -37,9 +37,17 @@ const GameData = {
     }
     console.log(this.playersHand);
     console.log(this.dealersHand);
+    // const playerCardValue1 = this.playersHand[0].value;
+    // const playerCardValue2 = this.playersHand[1].value;
+    // console.log(playerCardValue1);
+    // console.log(playerCardValue2);
+    const playerHandValue = this.playersHand[0].value + this.playersHand[1].value;
+    console.log(playerHandValue);
+    // if (playerHandValue === 21) {
+      // 
+    // } 
   },
-  // const playerCardValue1 = playersHand[0].value;
-  // const playerCardValue2 = playersHand[1].value;
+
   // playerCardValue3: playersHand[2].value,
   // playerCardValue4: playersHand[3].value,
   // playerCardValue5: playersHand[4].value,
@@ -75,7 +83,7 @@ const GameData = {
 }
 
 
-window.onload=GameData.createDeck();
+window.onload = GameData.createDeck();
 //**jquery for buttons
 $('.deal').click(function () {
   GameData.deal();
