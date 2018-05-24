@@ -1,6 +1,13 @@
 const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
 const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
-const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
+const aceValue = function() {
+  if (GameLogic.playerHandValue > 21){
+  return 1;
+  } else {
+    return 11;
+  }
+}
+const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, aceValue()];
 let cards = [];
 const images = ['https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_2.png',
   'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_3.png',
@@ -109,7 +116,7 @@ const GameLogic = {
     this.getPlayerHandValue();
     this.getDealerHandValue();
     UserInterface.updatePlayersImages();
-    UserInterface.updateDealersImages();
+    UserInterface.updateDealersImagesDeal();
     if (this.playerHandValue == 21) {
       if (this.playerHandValue > this.dealerHandValue) {
         swal('You win!', 'You have blackjack!', 'success');
@@ -135,19 +142,20 @@ const GameLogic = {
     this.getDealerHandValue();
     this.getPlayerHandValue();
     if (this.dealerHandValue === 21) {
+      UserInterface.updateDealersImagesStay();
       swal('You Lose!', 'Dealer has blackjack.', 'error')
     }
     while (this.dealerHandValue < this.playerHandValue) {
       this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+      UserInterface.updateDealersImagesStay();
       this.getDealerHandValue();
-      UserInterface.updateDealersImages();
       if (this.dealerHandValue > 21) {
         swal('You Win!', 'Dealer busted.', 'success')
         //stop game
       }
       if (this.dealerHandValue === 21) {
         if (this.dealerHandValue > this.playerHandValue) {
-          swal('You Lose!', 'error')
+          swal('You Lose!', '', 'error')
         }
         if (this.dealerHandValue === this.playerHandValue) {
           swal('You pushed with the dealer.')
@@ -156,7 +164,7 @@ const GameLogic = {
     }
     if (this.dealerHandValue < 21) {
       if (this.dealerHandValue > this.playerHandValue) {
-        swal('You Lose!', 'error');
+        swal('You Lose!', '', 'error');
       }
       if (this.dealerHandValue === this.playerHandValue) {
         swal('You pushed with the dealer.');
@@ -178,7 +186,7 @@ const GameLogic = {
     console.log('the number of cards is', cards.length);
   }
 
-  //**disables the buttons other than redeal */
+  //disable the buttons other than redeal /
   // win: function () {
 
   // }
@@ -192,7 +200,13 @@ const UserInterface = {
     }
   },
 
-  updateDealersImages: function () {
+  updateDealersImagesDeal: function () {
+    $('#dealerHand').empty();
+    $('#dealerHand').append(`<img class="card" src='${GameLogic.dealersHand[0].imageURL}'>`);
+    $('#dealerHand').append('<img class="card" src="https://i.pinimg.com/736x/41/d8/37/41d8375f3237702fed8b274ae68306ab--vintage-tarot-cards-vintage-playing-cards.jpg">');
+  },
+
+  updateDealersImagesStay: function () {
     $('#dealerHand').empty();
     for (i = 0; i < GameLogic.dealersHand.length; i++) {
       $('#dealerHand').append(`<img class="card" src='${GameLogic.dealersHand[i].imageURL}'>`);
@@ -203,6 +217,9 @@ const UserInterface = {
 
 //**event handlers for buttons
 $('.toggle').toggle();
+$('.redeal').toggle();
+$('.stay').toggle();
+$('.hit').toggle();
 $('.deal').click(function () {
   GameLogic.deal();
   $('.deal').toggle();
@@ -214,14 +231,11 @@ $('.deal').click(function () {
 $('.hit').click(function () {
   GameLogic.hitPlayer();
 });
-$('.hit').toggle();
 $('.stay').click(function () {
   GameLogic.stay();
 });
-$('.stay').toggle();
 $('.redeal').click(function () {
   GameLogic.redeal();
 });
-$('.redeal').toggle();
 
 
