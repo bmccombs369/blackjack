@@ -20,7 +20,7 @@ Load Page:
 ![load page wireframe](https://imgur.com/m9nERME.jpg 'Load Page Wireframe')
 
 Game Page:
-![game page wireframe](https://imgur.com/Ypg2VUp.jpg 'Game Page Wireframe')
+![game page wireframe](https://imgur.com/a/6vhr0oC.jpg 'Game Page Wireframe')
 
 Win/Lose Page:
 ![end game wireframe](https://imgur.com/3kZsFYE.jpg 'End of Game Wireframe')

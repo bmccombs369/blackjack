@@ -19,24 +19,26 @@
     <a class="waves-effect waves-light btn hit">hit</a>
     <a class="waves-effect waves-light btn stay">stay</a>
     <a class="waves-effect waves-light btn redeal right">redeal</a>
-    <div id='rules'>
-        <h3>How It Works</h3>
-        <p>The object of the game is to beat the dealer by having a count as close to 21 as possible, whithout going over 21.
-            Each card is worth it's number with face cards being worth 10 and Aces being worth 11 unless it would make you
-            bust, in which case it is worth 1. If you go over 21 you bust and the game is over. If you are dealt an opening
-            hand with a count of 21 you have blackjack and win, unless the dealer can match with his opening hand. The game
-            begins with you and the dealer being dealt 2 cards. You will go first and can decide to hit and try to increase
-            your count, or you can stay and pass the turn to the dealer to see if he can beat your count. Good luck!
-        </p>
+    <div class="container">
+        <div id='rules'>
+            <h3>How It Works</h3>
+            <p>The object of the game is to beat the dealer by having a count as close to 21 as possible, whithout going over
+                21. Each card is worth it's number with face cards being worth 10 and Aces being worth 11 unless it would
+                make you bust, in which case it is worth 1. If you go over 21 you bust and the game is over. If you are dealt
+                an opening hand with a count of 21 you have blackjack and win, unless the dealer can match with his opening
+                hand. The game begins with you and the dealer being dealt 2 cards. You will go first and can decide to hit
+                and try to increase your count, or you can stay and pass the turn to the dealer to see if he can beat your
+                count. Good luck!
+            </p>
+        </div>
+        <div class='toggle'>Player's Hand
+            <div id='playerHand'></div>
+        </div>
+        <br>
+        <div class='toggle'>Dealer's Hand
+            <div id='dealerHand'></div>
+        </div>
     </div>
-    <div class='toggle'>Player's Hand
-        <div id='playerHand'></div>
-    </div>
-    <br>
-    <div class='toggle'>Dealer's Hand
-        <div id='dealerHand'></div>
-    </div>
-
     <footer></footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
