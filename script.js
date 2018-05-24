@@ -116,10 +116,10 @@ const GameLogic = {
     this.getDealerHandValue();
     if (this.playerHandValue == 21) {
       if (this.playerHandValue > this.dealerHandValue) {
-        alert('You have blackjack!');//SWITCH TO SWEET ALERT
+        swal('You win!', 'You have blackjack!', 'success');
       }
       if (this.playerHandValue == this.dealerHandValue) {
-        alert('You pushed with the dealer.');//SWITCH TO SWEET ALERT
+        swal('You pushed with the dealer.');
       }
     }
   },
@@ -133,7 +133,7 @@ const GameLogic = {
     this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
     this.getPlayerHandValue();
     if (this.playerHandValue > 21) {
-      alert('You busted!');//SWITH TO SWEET ALERT        // turn off buttons
+      swal('You Lose!', 'You busted.', 'error');
     }
   },
 
@@ -144,30 +144,30 @@ const GameLogic = {
     this.getDealerHandValue();
     this.getPlayerHandValue();
     if (this.dealerHandValue === 21) {
-      alert('Dealer has blackjack. You lose.')
+      swal('You Lose!', 'Dealer has blackjack.', 'error')
     }
     while (this.dealerHandValue < this.playerHandValue) {
       this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
       this.getDealerHandValue();
       if (this.dealerHandValue > 21) {
-        alert('Dealer busted. You win!')
+        swal('You Win!', 'Dealer busted.', 'success')
         //stop game
       }
       if (this.dealerHandValue === 21) {
         if (this.dealerHandValue > this.playerHandValue) {
-          alert('Dealer wins.')
+          swal('You Lose!', "'Dealer has' + this.dealerHandValue", 'error')
         }
         if (this.dealerHandValue === this.playerHandValue) {
-          alert('You push.')
+          swal('You pushed with the dealer.')
         }
       }
     }
     if (this.dealerHandValue < 21) {
       if (this.dealerHandValue > this.playerHandValue) {
-        alert('Dealer wins.');
+        swal('You Lose!', "'Dealer wins.' + this.dealerHandValue", 'error');
       }
       if (this.dealerHandValue === this.playerHandValue) {
-        alert('You push.');
+        swal('You pushed with the dealer.');
       }
     }
   },
