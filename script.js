@@ -77,12 +77,6 @@ const GameLogic = {
     console.log(cards);
   },
 
-  // addImages: function () {
-  //   for (var i = 0; i < cards.length; i++) {
-  //     cards.image
-  //   }
-  // },
-
   randomNumber: function () {
     return Math.floor(Math.random() * cards.length);
   },
@@ -124,10 +118,6 @@ const GameLogic = {
     }
   },
 
-  //
-  // checkForBlackjack: function () {
-  // },
-
   //**hits player with one card
   hitPlayer: function () {
     this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
@@ -136,8 +126,6 @@ const GameLogic = {
       swal('You Lose!', 'You busted.', 'error');
     }
   },
-
-
 
   //**player stays and passes turn to the dealer
   stay: function () {

@@ -9,7 +9,13 @@ Libraries: Materialize, jQuery, SweetAlert
 Planning: Trello
 Text Editor: Visual Studio Code
 
-##Wireframe
+##Wireframes
+Load Page:
+![alt text](https://imgur.com/m9nERME 'load page')
+Game Page:
+![alt text](https://imgur.com/Ypg2VUp 'game page')
+Win/Lose Page:
+![alt text](https://imgur.com/3kZsFYE 'win/lose page')
 
 ##Links
 [My Trello Board](https://trello.com/b/td9qpJ7e/wdi-project-1-blackjack)
