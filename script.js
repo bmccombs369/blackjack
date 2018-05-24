@@ -1,13 +1,13 @@
 const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
 const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
-const aceValue = function() {
-  if (GameLogic.playerHandValue > 21){
-  return 1;
-  } else {
-    return 11;
-  }
-}
-const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, aceValue()];
+// const aceValue = function() {
+//   if (GameLogic.playerHandValue > 21){
+//   return 1;
+//   } else {
+//     return 11;
+//   }
+// }
+const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
 let cards = [];
 const images = ['https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_2.png',
   'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_3.png',
@@ -74,7 +74,7 @@ const GameLogic = {
     console.log(cards.length);
     for (var i = 0; i < suits.length; i++) {
       for (var j = 0; j < faces.length; j++) {
-        var card = { suit: suits[i], face: faces[j], value: values[j]/*, imageURL: images[]*/ }
+        var card = { suit: suits[i], face: faces[j], value: values[j]}
         cards.push(card);
       }
     }
