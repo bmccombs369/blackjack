@@ -74,7 +74,7 @@ const GameLogic = {
     console.log(cards.length);
     for (var i = 0; i < suits.length; i++) {
       for (var j = 0; j < faces.length; j++) {
-        var card = { suit: suits[i], face: faces[j], value: values[j]}
+        var card = { suit: suits[i], face: faces[j], value: values[j] }
         cards.push(card);
       }
     }
@@ -94,7 +94,15 @@ const GameLogic = {
       this.playerHandValue += this.playersHand[i].value;
     }
     console.log(this.playersHand);
-    console.log('playerHandValue = ' + this.playerHandValue)
+    console.log('playerHandValue = ' + this.playerHandValue);
+    if (this.playerHandValue > 21) {
+      for (i = 0; i < this.playersHand.length; i++) {
+        if (this.playersHand[i].face == "Ace") {
+          this.playerHandValue -= 10;
+        }
+      }
+    }
+    console.log(this.playerHandValue);
   },
 
   getDealerHandValue: function () {
@@ -104,9 +112,16 @@ const GameLogic = {
     }
     console.log(this.dealersHand);
     console.log('dealerHandValue = ' + this.dealerHandValue);
+    if (this.dealerHandValue > 21) {
+      for (i = 0; i < this.dealersHand.length; i++) {
+        if (this.dealersHand[i].face == "Ace") {
+          this.dealerHandValue -= 10;
+        }
+      }
+    }
   },
 
- //disables hit and stay buttons
+  //disables hit and stay buttons
   gameOver: function () {
     $('.hit, .stay').addClass('disabled');
   },
@@ -130,11 +145,11 @@ const GameLogic = {
       if (this.playerHandValue > this.dealerHandValue) {
         swal('You win!', 'You have blackjack!', 'success');
         this.gameOver();
-        UserInterface.updateDealersImagesStay();
       }
       if (this.playerHandValue == this.dealerHandValue) {
         swal('You pushed with the dealer.');
-        this.gameOver();
+        this.gameOver();   
+        UserInterface.updateDealersImagesStay();
       }
     }
   },
@@ -154,6 +169,7 @@ const GameLogic = {
   stay: function () {
     this.getDealerHandValue();
     this.getPlayerHandValue();
+    UserInterface.updateDealersImagesStay();
     if (this.dealerHandValue === 21) {
       UserInterface.updateDealersImagesStay();
       swal('You Lose!', 'Dealer has blackjack.', 'error');
