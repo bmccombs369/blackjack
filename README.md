@@ -16,13 +16,13 @@ Text Editor: Visual Studio Code
 ## Wireframes
 
 Load Page:
-![alt text](https://imgur.com/m9nERME 'load page')
+![load page wireframe](https://imgur.com/m9nERME 'load page')
 
 Game Page:
-![alt text](https://imgur.com/Ypg2VUp 'game page')
+![game page wireframe](https://imgur.com/Ypg2VUp 'game page')
 
 Win/Lose Page:
-![alt text](https://imgur.com/3kZsFYE 'win/lose page')
+![end game wireframe](https://imgur.com/3kZsFYE 'win/lose page')
 
 ## Links
 
@@ -30,6 +30,6 @@ Win/Lose Page:
 
 [My Blackjack Site]()
 
-## Version 2
+## Updates
 
-In the second version I want to add betting and betting related abilities such as splitting, insurance, and doubling down.
+In the second version I want to add betting and betting related abilities such as splitting, insurance, and doubling down. Also I would like to spend more time styling the app.

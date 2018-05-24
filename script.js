@@ -108,6 +108,8 @@ const GameLogic = {
     }
     this.getPlayerHandValue();
     this.getDealerHandValue();
+    UserInterface.updatePlayersImages();
+    UserInterface.updateDealersImages();
     if (this.playerHandValue == 21) {
       if (this.playerHandValue > this.dealerHandValue) {
         swal('You win!', 'You have blackjack!', 'success');
@@ -121,6 +123,7 @@ const GameLogic = {
   //**hits player with one card
   hitPlayer: function () {
     this.playersHand.push(cards.splice(this.randomNumber(), 1)[0]);
+    UserInterface.updatePlayersImages();
     this.getPlayerHandValue();
     if (this.playerHandValue > 21) {
       swal('You Lose!', 'You busted.', 'error');
@@ -137,13 +140,14 @@ const GameLogic = {
     while (this.dealerHandValue < this.playerHandValue) {
       this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
       this.getDealerHandValue();
+      UserInterface.updateDealersImages();
       if (this.dealerHandValue > 21) {
         swal('You Win!', 'Dealer busted.', 'success')
         //stop game
       }
       if (this.dealerHandValue === 21) {
         if (this.dealerHandValue > this.playerHandValue) {
-          swal('You Lose!', "'Dealer has' + this.dealerHandValue", 'error')
+          swal('You Lose!', 'error')
         }
         if (this.dealerHandValue === this.playerHandValue) {
           swal('You pushed with the dealer.')
@@ -152,7 +156,7 @@ const GameLogic = {
     }
     if (this.dealerHandValue < 21) {
       if (this.dealerHandValue > this.playerHandValue) {
-        swal('You Lose!', "'Dealer wins.' + this.dealerHandValue", 'error');
+        swal('You Lose!', 'error');
       }
       if (this.dealerHandValue === this.playerHandValue) {
         swal('You pushed with the dealer.');
@@ -181,17 +185,31 @@ const GameLogic = {
 }
 
 const UserInterface = {
+  updatePlayersImages: function () {
+    $('#playerHand').empty();
+    for (i = 0; i < GameLogic.playersHand.length; i++) {
+      $('#playerHand').append(`<img class="card" src='${GameLogic.playersHand[i].imageURL}'>`);
+    }
+  },
 
+  updateDealersImages: function () {
+    $('#dealerHand').empty();
+    for (i = 0; i < GameLogic.dealersHand.length; i++) {
+      $('#dealerHand').append(`<img class="card" src='${GameLogic.dealersHand[i].imageURL}'>`);
+    }
+  }
 }
 
 
 //**event handlers for buttons
+$('.toggle').toggle();
 $('.deal').click(function () {
   GameLogic.deal();
   $('.deal').toggle();
   $('.hit').toggle();
   $('.stay').toggle();
   $('.redeal').toggle();
+  $('.toggle').toggle();
 });
 $('.hit').click(function () {
   GameLogic.hitPlayer();
@@ -205,4 +223,5 @@ $('.redeal').click(function () {
   GameLogic.redeal();
 });
 $('.redeal').toggle();
+
 

@@ -11,19 +11,26 @@
 </head>
 
 <body class='light-green darken-2'>
-    <header class='center-align'><img class='logo' src='https://bschool.pepperdine.edu/about/at-a-glance/images/21.png' alt='game logo'></header>
+    <header class='center-align'>
+        <img class='logo' src='https://bschool.pepperdine.edu/about/at-a-glance/images/21.png' alt='game logo'>
+    </header>
     <main></main>
     <a class="waves-effect waves-light btn deal">deal</a>
     <a class="waves-effect waves-light btn hit">hit</a>
     <a class="waves-effect waves-light btn stay">stay</a>
-    <a class="waves-effect waves-light btn redeal">redeal</a>
-    <div id=myHand></div>
-    <div id=dealerHand></div>
-
+    <a class="waves-effect waves-light btn redeal right">redeal</a>
+    <div class="toggle">Player's Hand
+        <div id="playerHand"></div>
+    </div>
+    <br>
+    <div class="toggle">Dealer's Hand
+        <div id="dealerHand"></div>
+    </div>
 
     <footer></footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="script.js"></script>
 </body>
