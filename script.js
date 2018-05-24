@@ -2,58 +2,58 @@ const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
 const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
 let cards = [];
-const images = ['https://github.com/bmccombs369/blackjackimages/blob/master/clubs_2.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_3.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_4.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_5.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_6.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_7.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_8.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_9.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_10.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_jack.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_jbqueen.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_king.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/clubs_race.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_2.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_3.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_4.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_5.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_6.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_7.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_8.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_9.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_10.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_jack.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_jbqueen.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_king.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/diamonds_race.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_2.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_3.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_4.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_5.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_6.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_7.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_8.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_9.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_10.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_jack.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_jbqueen.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_king.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/hearts_race.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_2.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_3.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_4.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_5.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_6.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_7.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_8.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_9.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_10.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_jack.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_jbqueen.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_king.png',
-'https://github.com/bmccombs369/blackjackimages/blob/master/spades_race.png',]
+const images = ['https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_2.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_3.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_4.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_5.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_6.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_7.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_8.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_9.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_10.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_jack.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_jbqueen.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_king.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_race.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_2.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_3.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_4.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_5.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_6.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_7.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_8.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_9.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_10.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_jack.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_jbqueen.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_king.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/diamonds_race.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_2.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_3.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_4.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_5.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_6.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_7.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_8.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_9.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_10.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_jack.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_jbqueen.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_king.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/hearts_race.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_2.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_3.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_4.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_5.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_6.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_7.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_8.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_9.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_10.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_jack.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_jbqueen.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_king.png',
+  'https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/spades_race.png',]
 
 const GameLogic = {
   playersHand: [],
@@ -61,25 +61,27 @@ const GameLogic = {
   playerHandValue: 0,
   dealerHandValue: 0,
   isRunning: true,
-  // cards: [],
 
   //**creates a 52 card deck
   createDeck: function () {
     console.log(cards.length);
     for (var i = 0; i < suits.length; i++) {
       for (var j = 0; j < faces.length; j++) {
-        var card = { suit: suits[i], face: faces[j], value: values[j] }
+        var card = { suit: suits[i], face: faces[j], value: values[j]/*, imageURL: images[]*/ }
         cards.push(card);
       }
+    }
+    for (var k = 0; k < images.length; k++) {
+      cards[k].imageURL = images[k];
     }
     console.log(cards);
   },
 
   // addImages: function () {
-  //   for (var i = 0; i < cards.length) {
-
+  //   for (var i = 0; i < cards.length; i++) {
+  //     cards.image
   //   }
-  // }
+  // },
 
   randomNumber: function () {
     return Math.floor(Math.random() * cards.length);
