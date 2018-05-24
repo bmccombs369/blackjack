@@ -17,13 +17,13 @@ Text Editor: Visual Studio Code
 ## Wireframes
 
 Load Page:
-![load page wireframe] (https://imgur.com/m9nERME)
+![load page wireframe] (https://imgur.com/m9nERME 'Load Page Wireframe')
 
 Game Page:
-![game page wireframe] (https://imgur.com/Ypg2VUp)
+![game page wireframe] (https://imgur.com/Ypg2VUp 'Game Page Wireframe')
 
 Win/Lose Page:
-![end game wireframe] (https://imgur.com/3kZsFYE)
+![end game wireframe] (https://imgur.com/3kZsFYE 'End of Game Wireframe')
 
 ## Links
 
