@@ -106,6 +106,15 @@ const GameLogic = {
     console.log('dealerHandValue = ' + this.dealerHandValue);
   },
 
+ //disables hit and stay buttons
+  gameOver: function () {
+    $('.hit, .stay').addClass('disabled');
+  },
+
+  undoGameOver: function () {
+    $('.hit, .stay').removeClass('disabled');
+  },
+
   //**deals 2 cards to player and dealer
   deal: function () {
     this.createDeck();
@@ -120,9 +129,12 @@ const GameLogic = {
     if (this.playerHandValue == 21) {
       if (this.playerHandValue > this.dealerHandValue) {
         swal('You win!', 'You have blackjack!', 'success');
+        this.gameOver();
+        UserInterface.updateDealersImagesStay();
       }
       if (this.playerHandValue == this.dealerHandValue) {
         swal('You pushed with the dealer.');
+        this.gameOver();
       }
     }
   },
@@ -134,6 +146,7 @@ const GameLogic = {
     this.getPlayerHandValue();
     if (this.playerHandValue > 21) {
       swal('You Lose!', 'You busted.', 'error');
+      this.gameOver();
     }
   },
 
@@ -143,31 +156,37 @@ const GameLogic = {
     this.getPlayerHandValue();
     if (this.dealerHandValue === 21) {
       UserInterface.updateDealersImagesStay();
-      swal('You Lose!', 'Dealer has blackjack.', 'error')
+      swal('You Lose!', 'Dealer has blackjack.', 'error');
+      this.gameOver();
     }
     while (this.dealerHandValue < this.playerHandValue) {
       this.dealersHand.push(cards.splice(this.randomNumber(), 1)[0]);
       UserInterface.updateDealersImagesStay();
       this.getDealerHandValue();
       if (this.dealerHandValue > 21) {
-        swal('You Win!', 'Dealer busted.', 'success')
+        swal('You Win!', 'Dealer busted.', 'success');
+        this.gameOver();
         //stop game
       }
       if (this.dealerHandValue === 21) {
         if (this.dealerHandValue > this.playerHandValue) {
-          swal('You Lose!', '', 'error')
+          swal('You Lose!', '', 'error');
+          this.gameOver();
         }
         if (this.dealerHandValue === this.playerHandValue) {
-          swal('You pushed with the dealer.')
+          swal('You pushed with the dealer.');
+          this.gameOver();
         }
       }
     }
     if (this.dealerHandValue < 21) {
       if (this.dealerHandValue > this.playerHandValue) {
         swal('You Lose!', '', 'error');
+        this.gameOver();
       }
       if (this.dealerHandValue === this.playerHandValue) {
         swal('You pushed with the dealer.');
+        this.gameOver();
       }
     }
   },
@@ -184,6 +203,7 @@ const GameLogic = {
     console.log('the number of cards is', cards.length);
     this.deal();
     console.log('the number of cards is', cards.length);
+    this.undoGameOver()
   }
 
   //disable the buttons other than redeal /
