@@ -263,6 +263,7 @@ $('.deal').click(function () {
   $('.stay').toggle();
   $('.redeal').toggle();
   $('.toggle').toggle();
+  $('#rules').toggle();
 });
 $('.hit').click(function () {
   GameLogic.hitPlayer();
