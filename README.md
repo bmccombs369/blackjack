@@ -5,8 +5,11 @@ This is a blackjack app. The point of the game is the have the highest card tota
 
 ##Technologies Used
 Languages: Javascript, HTML5, CSS3
+
 Libraries: Materialize, jQuery, SweetAlert
+
 Planning: Trello
+
 Text Editor: Visual Studio Code
 
 ##Wireframes
