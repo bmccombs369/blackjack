@@ -1,12 +1,5 @@
 const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
 const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
-// const aceValue = function() {
-//   if (GameLogic.playerHandValue > 21){
-//   return 1;
-//   } else {
-//     return 11;
-//   }
-// }
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
 let cards = [];
 const images = ['https://raw.githubusercontent.com/bmccombs369/blackjackimages/master/clubs_2.png',
@@ -145,6 +138,7 @@ const GameLogic = {
       if (this.playerHandValue > this.dealerHandValue) {
         swal('You win!', 'You have blackjack!', 'success');
         this.gameOver();
+        UserInterface.updateDealersImagesStay();
       }
       if (this.playerHandValue == this.dealerHandValue) {
         swal('You pushed with the dealer.');
@@ -182,7 +176,6 @@ const GameLogic = {
       if (this.dealerHandValue > 21) {
         swal('You Win!', 'Dealer busted.', 'success');
         this.gameOver();
-        //stop game
       }
       if (this.dealerHandValue === 21) {
         if (this.dealerHandValue > this.playerHandValue) {
@@ -217,15 +210,10 @@ const GameLogic = {
   redeal: function () {
     this.reset();
     console.log('the number of cards is', cards.length);
-    this.deal();
+      this.undoGameOver();
     console.log('the number of cards is', cards.length);
-    this.undoGameOver()
+    this.deal();
   }
-
-  //disable the buttons other than redeal /
-  // win: function () {
-
-  // }
 }
 
 const UserInterface = {
