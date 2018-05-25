@@ -134,6 +134,7 @@ const GameLogic = {
     this.getDealerHandValue();
     UserInterface.updatePlayersImages();
     UserInterface.updateDealersImagesDeal();
+    //maybe move the blackjack check into the stay function so that you dont just load into a hand that is over
     if (this.playerHandValue == 21) {
       if (this.playerHandValue > this.dealerHandValue) {
         swal('You win!', 'You have blackjack!', 'success');
