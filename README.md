@@ -29,7 +29,7 @@ Win/Lose Page:
 
 [My Trello Board](https://trello.com/b/td9qpJ7e/wdi-project-1-blackjack)
 
-[My Blackjack Site](http://hardcore-curie-6bdda7.bitballoon.com/)
+[My Blackjack Site](http://bensblackjack.bitballoon.com/)
 
 ## Updates
 
