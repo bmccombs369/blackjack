@@ -7,7 +7,7 @@ This is my first ever web app. I made it as my first project for my Web Developm
 ## Links
 [My Blackjack Site](http://bensblackjack.bitballoon.com/)
 
-[My Wireframs](https://imgur.com/a/7FB0T8E)
+[My Wireframes](https://imgur.com/a/7FB0T8E)
 
 [My Trello Board](https://trello.com/b/td9qpJ7e/wdi-project-1-blackjack)
 
