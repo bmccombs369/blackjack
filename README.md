@@ -2,34 +2,24 @@
 
 ## Description
 
-This is a blackjack app. The point of the game is the have the highest card total without going over 21. The page loads with a deal button. When the button is clicked the player is dealt two cards along with the dealer. The player then decides if they want to hit or stay. Once the player stays, the dealer will try to beat their total. When the hand is over the player can redeal and start a new hand.
+This is my first ever web app. I made it as my first project for my Web Development Immersive course at General Assembly. The assignment was to make a game app using JavaScript, HTML and CSS. My strategy was to build all of the game logic and make sure it worked using console logs before adding styling via CSS and DOM manipulation via JavaScript.
+
+## Links
+[My Blackjack Site](http://bensblackjack.bitballoon.com/)
+
+[My Wireframs](https://imgur.com/a/7FB0T8E)
+
+[My Trello Board](https://trello.com/b/td9qpJ7e/wdi-project-1-blackjack)
 
 ## Technologies Used
 
-Languages: Javascript, HTML5, CSS3
+Languages: JavaScript, HTML5, CSS3
 
 Libraries: Materialize, jQuery, SweetAlert
 
 Planning: Trello
 
 Text Editor: Visual Studio Code
-
-## Wireframes
-
-Load Page:
-![load page wireframe](https://imgur.com/m9nERME.jpg 'Load Page Wireframe')
-
-Game Page:
-![game page wireframe](https://i.imgur.com/GarY4zk.jpg 'Game Page Wireframe')
-
-Win/Lose Page:
-![end game wireframe](https://imgur.com/3kZsFYE.jpg 'End of Game Wireframe')
-
-## Links
-
-[My Trello Board](https://trello.com/b/td9qpJ7e/wdi-project-1-blackjack)
-
-[My Blackjack Site](http://bensblackjack.bitballoon.com/)
 
 ## Updates
 
